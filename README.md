@@ -36,6 +36,8 @@ Finally connect the Arduino board to the pedal, substituting 5 volt power, groun
   
 The analog output from the Arduino board should be connected through a 4,7 kOhm resistor to the wire that previously was connected to the potentiometer "wiper" middle pin. And additionally a 100nF capacitor should be connected from this wire to ground.  
   
+<img src=pics/connections3.jpg> 
+  
 <img src=pics/connections2.jpg> 
 
 
