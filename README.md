@@ -30,11 +30,11 @@ First you need to move the 0 Ohm jumper on the HX711 board. This makes it update
 
 Then connect the strain gauge to the HX711 board and the HX711 board to the Arduino Nano like this.  
   
-<img src=pics/connecting1.jpg> 
+<img src=pics/connections1.jpg> 
 
 Finally connect the Arduino board to the pedal, substituting 5 volt power, ground and the analog output voltage to the potentiometers 5 volt, ground and "wiper" middle pin.  
 
-<img src=pics/connecting2.jpg> 
+<img src=pics/connections2.jpg> 
 
 
 
