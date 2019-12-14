@@ -10,7 +10,7 @@ Parts needed:
   
 # Mounting the strain gauge  
   
-You'll have to be a bit creative to mount the strain gauge in the pedal so the pedal pushes against it so it can detect the forces applied to it. It's not that sensitive how much force and at what angle the force is applied, here's an example on how I mounted it in a Logitech G25 pedal set. The black "arm" part was 3D-printed but you can of course make it out of a piece of wood or metal instead. I later rebuilt this "arm" so that i had a 5mm soft rubber inserted between the pedal, arm and strain gauge. This enabled the pedal to move just a tiny bit initially when pressed down and then go stiff. To me this was closer to how a real car brake pedal feeels. 
+You'll have to be a bit creative to mount the strain gauge in the pedal so the pedal pushes against it so it can detect the forces applied to it. It's not that sensitive how much force and at what angle the force is applied. Here's an example on how I mounted it in a Logitech G25 pedal set. The black "arm" part was 3D-printed but you can of course make it out of a piece of wood or metal instead. I later redid this "arm" so that i had 5mm of soft rubber inserted between the pedal, arm and strain gauge. This enabled the pedal to move just a tiny bit initially when pressed down and then go stiff. To me this was closer to how a real car brake pedal feeels. 
 
 <img src=pics/logipedal1.jpg>  
   
