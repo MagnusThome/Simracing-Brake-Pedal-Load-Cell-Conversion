@@ -10,5 +10,15 @@ Parts needed:
   
 You'll have to be a bit creative to mount the strain gauge in the pedal so the pedal pushes against it so it can detect the forces applied to it. It's not that sensitive how much force and at what angle the force is applied, here's an example on how I mounted it in a Logitech G25 pedal set:
 
-<img src=pics/logipedal1.jpg>
+<img src=pics/logipedal1.jpg>  
+  
+<img src=pics/logipedal2.jpg>  
+  
+<img src=pics/logipedal3.jpg>  
+  
+<img src=pics/logipedal4.jpg>  
+  
+<img src=pics/logipedal5.jpg>  
+  
+  
 
