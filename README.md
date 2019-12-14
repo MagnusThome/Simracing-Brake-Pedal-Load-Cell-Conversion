@@ -24,7 +24,7 @@ You'll have to be a bit creative to mount the strain gauge in the pedal so the p
   
 # Connecting everything  
   
-First you need to move a 0 Ohm jumper on the HX711 board. This makes it update at 80Hz instead of only 10Hz.  
+First you need to move the 0 Ohm jumper on the HX711 board. This makes it update at 80Hz instead of only 10Hz.  
   
 <img src=pics/HX711_jumper.jpg>  
 
