@@ -32,8 +32,10 @@ Then connect the strain gauge to the HX711 board and the HX711 board to the Ardu
   
 <img src=pics/connections1.jpg> 
 
-Finally connect the Arduino board to the pedal, substituting 5 volt power, ground and the analog output voltage to the potentiometers 5 volt, ground and "wiper" middle pin. DOUBLE check that the potentiometer actually has 5 volts and ground wired to it so these wires can drive the Arduino. Logitech pedals seem to have this, the G25 certainly does, but for other makes be sure to check. 
-
+Finally connect the Arduino board to the pedal, substituting 5 volt power, ground and the analog output voltage to the potentiometers 5 volt, ground and "wiper" middle pin. DOUBLE check that the potentiometer actually has 5 volts and ground wired to it so these wires can drive the Arduino. Logitech pedals seem to have this, the G25 certainly does, but for other makes be sure to check.   
+  
+The analog output from the Arduino board should be connected through a 4,7 kOhm resistor to the wire that previously was connected to the potentiometer "wiper" middle pin. And additionally a 100nF capacitor should be connected from this wire to ground.  
+  
 <img src=pics/connections2.jpg> 
 
 
