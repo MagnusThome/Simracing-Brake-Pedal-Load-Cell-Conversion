@@ -48,7 +48,7 @@ The analog output from the Arduino board should be connected through a 4,7 kOhm 
   
 <img src=pics/connections2.jpg>  
   
-<img src=pics/connections3.jpg>  
+<img src=pics/connections4.jpg>  
 
 
 
