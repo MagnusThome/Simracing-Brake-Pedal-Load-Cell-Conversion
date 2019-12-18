@@ -25,8 +25,14 @@ Do not apply any pressure to the brake pedal during the first 10 seconds after p
   
 # Mounting the strain gauge  
   
-You'll have to be a bit creative to mount the strain gauge in the pedal so the pedal pushes against it so it can detect the forces applied to it. It's not that sensitive how much force and at what angle the force is applied. Here's an example on how I mounted it in a Logitech G25 pedal set. The black "arm" part was 3D-printed but you can of course make it out of a piece of wood or metal instead. I later redid this "arm" so that I had 5mm of soft rubber inserted between the pedal, arm and strain gauge. This enabled the pedal to move just a tiny bit initially when pressed down and then go stiff. To me this was closer to how a real car brake pedal feeels. 
+You'll have to be a bit creative to mount the strain gauge in the pedal so the pedal pushes against it so it can detect the forces applied to it. It's not that sensitive how much force and at what angle the force is applied. Here's an example on how I mounted it in a Logitech G25 pedal set and on a Fanatec CSL pedal set  
+  
+The black "arm" part for the Logitech pedal was 3D-printed but you can of course make it out of a piece of wood or metal instead. I later redid this "arm" so that I had 5mm of soft rubber inserted between the pedal, arm and strain gauge. This enabled the pedal to move just a tiny bit initially when pressed down and then go stiff. To me this was closer to how a real car brake pedal feeels. 
 
+<img src=pics/fanatec0.jpg>  
+  
+<img src=pics/fanatec1.jpg>  
+  
 <img src=pics/logipedal1.jpg>  
   
 <img src=pics/logipedal2.jpg>  
@@ -47,7 +53,7 @@ Then connect the strain gauge to the HX711 board and the HX711 board to the Ardu
   
 <img src=pics/connections1.jpg> 
 
-Finally connect the Arduino board to the pedal, substituting 5 volt power, ground and the analog output voltage to the potentiometers 5 volt, ground and "wiper" middle pin. DOUBLE check that the potentiometer actually has 5 volts and ground wired to it so these wires can drive the Arduino. Logitech pedals seem to have this, the G25 certainly does, but for other makes be sure to check.   
+Finally connect the Arduino board to the pedal, substituting 5 volt power, ground and the analog output voltage to the potentiometers 5 volt, ground and "wiper" middle pin. DOUBLE check that the potentiometer actually has 5 volts and ground wired to it so these wires can drive the Arduino. Logitech pedals seem to have this, the G25 certainly does and also the Fanatec pedal I converted, but for other makes be sure to check.   
   
 The analog output from the Arduino board should be connected through a 4,7 kOhm resistor to the wire that previously was connected to the potentiometer "wiper" middle pin. And additionally a 100nF capacitor should be connected from this wire to ground.  
   
