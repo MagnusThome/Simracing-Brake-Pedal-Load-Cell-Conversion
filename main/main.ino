@@ -1,16 +1,16 @@
 #include "HX711.h"
+#include <EEPROM.h>
 
-////////////////////////////////////////////////////////
 
-// #define INVERT_ANALOG_OUTPUT          // If analog output voltage should be high for no braking force and low for full braking
-#define DEBUG                            // Enables printout of strain gauge force values over USB
-// #define OPTIONAL_FIXED_MAX -250000    // Disables auto calibration of max force value and uses this value instead (run serial monitor and DEBUG to see what values your strain gauge outputs)
+#define FANATEC_CSL
+//#define LOGITECH_G2X
 
-////////////////////////////////////////////////////////
 
 #define DOUT_PIN 2
 #define SCK_PIN 3
-#define ANALOG_PIN 10
+#define PWM_OUTPUT_PIN 10
+#define EEPROM_ADR 0
+#define PRESS_DETECT_THRESHOLD 30000 
 
 
 HX711 scale;
@@ -20,42 +20,83 @@ long max_val = 0;
 
 void setup() {
   Serial.begin(115200);
-  TCCR1B = TCCR1B & 0b11111000 | 1;     // RAISE PWM OUTPUT FREQUENCY ON ARDUINO NANO
+  TCCR1B = TCCR1B & 0b11111000 | 1;     // RAISE PWM OUTPUT FREQUENCY ON ARDUINO NANO. TCCR0B = pin 5 and 6.
   scale.begin(DOUT_PIN, SCK_PIN);
-  zero_val = scale.read_average(10);    // ZERO FORCE CALIBRATION. DO NOT PUSH ON PEDAL WHEN BOOTING UP! 
+  zero_val = scale.read_average(10);
+  EEPROM.get(EEPROM_ADR, max_val);
 }
 
 void loop() {
 
-  long raw_input = scale.read();
+  static bool startup = true;
+  static bool press_detect = false;
   int force;
-  const int DIRECTION_DETECT_DEAD_ZONE = 30000;
+  int output;
 
-  #ifdef OPTIONAL_FIXED_MAX
-    max_val = OPTIONAL_FIXED_MAX;
-  #else
-    if(raw_input>zero_val+DIRECTION_DETECT_DEAD_ZONE && raw_input>max_val) { // STRAIN GAUGE IS MOUNTED SO MORE FORCE GENERATES MORE POSITIVE RAW VALUES
-      max_val = raw_input; 
+  unsigned long now = millis();
+  long raw_input = scale.read();
+
+
+  // DURING FIRST 10 SECONDS AFTER BOOT
+  if ( now<10000 && startup==true ) {
+
+    if (raw_input<zero_val) {
+      zero_val = raw_input;
     }
-    if(raw_input<zero_val-DIRECTION_DETECT_DEAD_ZONE && raw_input<max_val) { // STRAIN GAUGE IS MOUNTED SO MORE FORCE GENERATES MORE NEGATIVE RAW VALUES
-      max_val = raw_input; 
+
+    // PEDAL WAS PRESSED DOWN
+    if (raw_input>zero_val+PRESS_DETECT_THRESHOLD) {
+      Serial.print("Pedal press detected. ");
+      if (raw_input>max_val || press_detect==false) {
+        press_detect = true;
+        max_val = raw_input; 
+        Serial.print("New max_val: ");
+        Serial.print(max_val);
+      }
+      Serial.println();
     }
-  #endif
+  }
+
+  // ONCE, EXACTLY 10 SECONDS AFTER BOOT
+  if ( now>10000 && startup==true ) {
+    startup = false;
+
+    // ONLY UPDATE EEPROM IF THE PEDAL WAS PUSHED DURING STARTUP PERIOD
+    if(press_detect) { 
+      Serial.print("Recalibration DONE. Saving new max_val:\t");
+      Serial.println(max_val);
+      EEPROM.put(EEPROM_ADR, max_val);
+    }
+    else {
+      Serial.println("Re-Calibration timed out. Keeping previous max_val");
+    }
+  }
+ 
 
   force = 255*((raw_input-zero_val)/(float)(max_val-zero_val));
   force = (int)((force-25)*1.25); // DEADZONE BOTH AT MAX AND MIN
   force = constrain(force,0,255); 
-  #ifdef INVERT_ANALOG_OUTPUT
-    force = 255-force;
-  #endif
-  analogWrite(ANALOG_PIN, force);
 
-  #ifdef DEBUG
+  output = force;
+  #ifdef LOGITECH_G2X
+    output = 255-force;
+  #endif
+  #ifdef FANATEC_CSL
+    output = 55-(55*force/255);
+  #endif
+  analogWrite(PWM_OUTPUT_PIN, output);
+
+  #define TIMER1 100
+  static unsigned long timer1 = TIMER1;
+  if (now - timer1 >= TIMER1) {
+    timer1 = now;
     Serial.print(raw_input); 
     Serial.print("\t"); 
     Serial.print(force); 
-    Serial.println(); 
-  #endif
+    Serial.print("\t"); 
+    Serial.print(5*output/(float)255); 
+    Serial.println("V"); 
+  }
 }
 
 
