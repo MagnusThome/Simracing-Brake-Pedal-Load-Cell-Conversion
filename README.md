@@ -8,8 +8,6 @@ Every time you apply power to the pedal it will be in self calibration mode for 
   
 - Important: the very first time you use the pedal you must calibrate maximum pedal pressure, at least once. This is done during the 10 second startup calibration phase by applying the amount of maximum force onto the pedal that you want to equal 100% full braking. You can choose a lighter or stronger pressure, whatever max force you apply during this self calibration phase will then be stored as the pressure where the pedal will send 100% braking to your PC or console, it is stored on the board even when power is disconnected.  
   
-- During these 10 seconds during startup the pedal must also be released fully at least once. If you apply force to the pedal during the whole 10 seconds the output will not work correctly.  
-  
 - Changing the calibration, choosing another pressure to equal full braking is simply done exactly the same way as you did the first time you calibrated it. Simply put: If you ever apply pressure to the brake pedal during the 10 second startup phase, this applied pressure will be stored as the new level and will from there on be used.  
   
 # Startup - Normal use  
