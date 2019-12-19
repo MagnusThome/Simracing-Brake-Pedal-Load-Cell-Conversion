@@ -36,14 +36,13 @@ void loop() {
 
   unsigned long now = millis();
   long raw_input = scale.read();
+  if (raw_input<zero_val) {
+    zero_val = raw_input;
+  }
 
 
   // DURING FIRST 10 SECONDS AFTER BOOT
   if ( now<10000 && startup==true ) {
-
-    if (raw_input<zero_val) {
-      zero_val = raw_input;
-    }
 
     // PEDAL WAS PRESSED DOWN
     if (raw_input>zero_val+PRESS_DETECT_THRESHOLD) {
