@@ -25,7 +25,7 @@ Do not apply any pressure to the brake pedal during the first 10 seconds after p
   
 You'll have to be a bit creative to mount the strain gauge in the pedal so the pedal pushes against it so it can detect the forces applied to it. It's not that sensitive how much force and at what angle the force is applied. Here's an example on how I mounted it in a Logitech G25 pedal set and on a Fanatec CSL pedal set.  
   
-Important: You DO need to have the strain gauge output higher values for higher pedal pressure. If you mount it backwards it will issue negative values for higher pressure, this will not work. To be sure what direction generates higher output values you can use the Arduino IDE serial monitor that prints the strain gauge output that is printed out on the USB port (which you connect to upload the code with anyway).  
+Important: You DO need to have the strain gauge output higher values for higher pedal pressure. If you mount it backwards it will issue negative values for higher pressure, this will not work. To be sure what direction generates higher output values you can use the Arduino IDE serial monitor that shows the strain gauge output that is printed out on the USB port (which you connect to upload the code with anyway).  
   
 The black "arm" part for the Logitech pedal that you can see in my pictures below was 3D-printed but you can of course make it out of a piece of wood or metal instead. I later redid this "arm" so that I had 5mm of soft rubber inserted between the pedal, arm and strain gauge. This enabled the pedal to move just a tiny bit initially when pressed down and then go stiff. To me this was closer to how a real car brake pedal feels. 
 
