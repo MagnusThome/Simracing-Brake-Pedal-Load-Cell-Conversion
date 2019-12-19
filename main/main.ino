@@ -10,7 +10,8 @@
 #define SCK_PIN 3
 #define PWM_OUTPUT_PIN 10
 #define EEPROM_ADR 0
-#define PRESS_DETECT_THRESHOLD 30000 
+#define PRESS_DETECT_THRESHOLD 30000    // CHANGE IN FORCE VALUE FROM STRAIN GAUGE TO DETECT "PEDAL PRESSED" DURING BOOT CALIBRATION
+#define DEADZONE 5                      // MAINLY TO REMOVE NOISE ON SIGNAL WHEN PEDAL IS AT REST
 
 
 HX711 scale;
@@ -73,8 +74,7 @@ void loop() {
   }
  
 
-  force = 255*((raw_input-zero_val)/(float)(max_val-zero_val));
-  force = (int)((force-25)*1.25); // DEADZONE BOTH AT MAX AND MIN
+  force = ((255+DEADZONE)*((raw_input-zero_val)/(float)(max_val-zero_val)))-DEADZONE;
   force = constrain(force,0,255); 
 
   output = force;
@@ -82,7 +82,7 @@ void loop() {
     output = 255-force;
   #endif
   #ifdef FANATEC_CSL
-    output = 55-(55*force/255);
+    output = 58-(58*force/255);
   #endif
   analogWrite(PWM_OUTPUT_PIN, output);
 
