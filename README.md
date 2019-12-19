@@ -33,6 +33,8 @@ The black "arm" part for the Logitech pedal that you can see in my pictures belo
   
 <img src=pics/fanatec1.jpg>  
   
+<img src=pics/fanatec2.jpg>  
+  
 <img src=pics/logipedal1.jpg>  
   
 <img src=pics/logipedal2.jpg>  
