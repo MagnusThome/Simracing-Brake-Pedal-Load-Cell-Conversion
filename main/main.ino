@@ -3,7 +3,8 @@
 
 
 #define FANATEC_CSL
-//#define LOGITECH_G2X
+// #define LOGITECH_G2X
+// #define REVERSED_STRAIN_GAUGE        // ENABLE IF THE STRAIN GAUGE IS MOUNTED BACKWARDS SO IT OUTPUTS LOWER VALUES FOR HIGHER PRESSURES
 
 
 #define DOUT_PIN 2
@@ -36,6 +37,10 @@ void loop() {
 
   unsigned long now = millis();
   long raw_input = scale.read();
+  #ifdef REVERSED_STRAIN_GAUGE
+    raw_input = -raw_input;
+  #endif
+  
   if (raw_input<zero_val) {
     zero_val = raw_input;
   }
