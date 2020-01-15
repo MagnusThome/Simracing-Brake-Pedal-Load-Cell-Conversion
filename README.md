@@ -2,6 +2,8 @@
 
 Mount a strain gauge in your simracing brake pedal. This kit will output an analog voltage that represents the force applied on the brake pedal. This voltage can be used instead of the voltage from the potentiometer used originally.  
   
+The total cost of parts is less than $10.
+  
 # Startup - Self calibration  
   
 Every time you apply power to the pedal it will be in self calibration mode for the first 10 seconds. In normal use you just leave the pedal alone, simply do not apply any pressure to it, during this startup 10 seconds. 
